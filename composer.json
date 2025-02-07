@@ -1,0 +1,26 @@
+{
+    "name": "ab01faz101/tail-alert",
+    "description": "An easy-to-use alert library for Laravel Livewire applications, leveraging Tailwind CSS for modern and responsive designs.",
+    "type": "library",
+    "license": "GPL-3.0",
+    "autoload": {
+        "psr-4": {
+            "Ab01faz101\\TailAlert\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "abolfazl",
+            "email": "ar.rahmatyy@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ab01faz101\\TailAlert\\TailAlertServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,29 @@
+.tail_alert_item.active{
+    animation: tail_alert_item_move .4s;
+}
+
+.tail_alert_item.active .tail_alert_time_animation{
+    margin: 0!important;
+    animation: fullWidthAnimate 5s ease;
+}
+
+
+
+@keyframes fullWidthAnimate {
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+@keyframes tail_alert_item_move {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+

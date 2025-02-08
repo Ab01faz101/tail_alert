@@ -23,7 +23,7 @@ function infoMessage(message, description = null) {
     if (!alertBox) {
         alertBox = document.createElement('div');
         alertBox.id = "alert_boxes_tail_alert";
-        alertBox.className = "fixed transition-all flex flex-col items-start justify-start top-0 right-0  h-screen overflow-x-hidden overflow-y-auto  w-[200px] sm:w-[500px] p-4";
+        alertBox.className = "fixed z-50 transition-all flex flex-col items-start justify-start top-0 right-0  h-screen overflow-x-hidden overflow-y-auto  w-[200px] sm:w-[500px] p-4";
         document.querySelector("body").appendChild(alertBox);
     }
     let alert = `
@@ -94,7 +94,7 @@ function successMessage(message, description = null) {
     if (!alertBox) {
         alertBox = document.createElement('div');
         alertBox.id = "alert_boxes_tail_alert";
-        alertBox.className = "fixed transition-all flex flex-col items-start justify-start top-0 right-0 h-screen overflow-x-hidden overflow-y-auto w-[200px] sm:w-[500px] p-4";
+        alertBox.className = "fixed z-50 transition-all flex flex-col items-start justify-start top-0 right-0 h-screen overflow-x-hidden overflow-y-auto w-[200px] sm:w-[500px] p-4";
         document.querySelector("body").appendChild(alertBox);
     }
     let alert = `
@@ -166,7 +166,7 @@ function warningMessage(message, description = null) {
     if (!alertBox) {
         alertBox = document.createElement('div');
         alertBox.id = "alert_boxes_tail_alert";
-        alertBox.className = "fixed transition-all flex flex-col items-start justify-start top-0 right-0 h-screen overflow-x-hidden overflow-y-auto w-[200px] sm:w-[500px] p-4";
+        alertBox.className = "fixed z-50 transition-all flex flex-col items-start justify-start top-0 right-0 h-screen overflow-x-hidden overflow-y-auto w-[200px] sm:w-[500px] p-4";
         document.querySelector("body").appendChild(alertBox);
     }
     let alert = `
@@ -241,7 +241,7 @@ function errorMessage(message, description = null) {
     if (!alertBox) {
         alertBox = document.createElement('div');
         alertBox.id = "alert_boxes_tail_alert";
-        alertBox.className = "fixed transition-all flex flex-col items-start justify-start top-0 right-0 h-screen overflow-x-hidden overflow-y-auto w-[200px] sm:w-[500px] p-4";
+        alertBox.className = "fixed z-50 transition-all flex flex-col items-start justify-start top-0 right-0 h-screen overflow-x-hidden overflow-y-auto w-[200px] sm:w-[500px] p-4";
         document.querySelector("body").appendChild(alertBox);
     }
     let alert = `

@@ -8,7 +8,11 @@
 ✔ Modern and minimal design with **Tailwind**  
 ✔ Fully compatible with **Livewire**  
 ✔ Supports different alert types (success, warning, error, info)  
+<<<<<<< HEAD
 ✔ Dismissible alerts (manually or auto-close)  
+=======
+✔ Dismissible alerts (manually or auto-close)
+>>>>>>> f868123 (initial commit)
 
 ## Preview
 ![Tail Alert Preview](https://cv.abolfazl01.ir/images/tail-alert-demo.png)

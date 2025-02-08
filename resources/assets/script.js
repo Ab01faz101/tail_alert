@@ -5,6 +5,16 @@ document.addEventListener("DOMContentLoaded", function () {
     Livewire.on("tail_alert_warning", (data) => showAlert("warning", ...data));
 });
 
+
+function clearAlertBox(){
+    let alert = document.querySelector(".tail_alert_item");
+    if(!alert ){
+        let alertBox = document.querySelector("#alert_boxes_tail_alert");
+        alertBox.remove();
+    }
+}
+
+
 function showAlert(type, data) {
     if (type === 'success') {
         successMessage(data.message, data.description);
@@ -17,13 +27,38 @@ function showAlert(type, data) {
     }
 }
 
+function clearAlert(newAlert) {
+    let remainingTime = 5000;
+
+    let clearAlertTimeOut = setTimeout(function () {
+        newAlert.remove();
+        clearAlertBox();
+    }, 5000);
+
+    newAlert.addEventListener('mousemove', function () {
+        clearTimeout(clearAlertTimeOut);
+        newAlert.querySelector('.tail_alert_time_animation').style.animationPlayState = "paused";
+    });
+    newAlert.addEventListener('mouseleave', function () {
+        newAlert.querySelector('.tail_alert_time_animation').style.animation = 'none'; // انیمیشن رو متوقف می‌کنیم
+        newAlert.querySelector('.tail_alert_time_animation').offsetHeight; // این خط باعث میشه انیمیشن دوباره از ابتدا اجرا بشه
+        newAlert.querySelector('.tail_alert_time_animation').style.animation = 'fullWidthAnimate 5s ease'; // انیمیشن رو دوباره تنظیم می‌کنیم
+
+        clearAlertTimeOut = setTimeout(function () {
+            newAlert.remove();
+            clearAlertBox();
+        }, 5000);
+
+    });
+}
+
 
 function infoMessage(message, description = null) {
     let alertBox = document.querySelector("#alert_boxes_tail_alert");
     if (!alertBox) {
         alertBox = document.createElement('div');
         alertBox.id = "alert_boxes_tail_alert";
-        alertBox.className = "fixed z-50 transition-all flex flex-col items-start justify-start top-0 right-0  h-screen overflow-x-hidden overflow-y-auto  w-[200px] sm:w-[500px] p-4";
+        alertBox.className = "fixed z-50 transition-all flex flex-col items-start justify-start top-0 right-0  h-auto max-h-auto max-h-screen overflow-x-hidden overflow-y-auto  w-[200px] sm:w-[500px] p-4";
         document.querySelector("body").appendChild(alertBox);
     }
     let alert = `
@@ -52,28 +87,6 @@ function infoMessage(message, description = null) {
               <span class="absolute tail_alert_time_animation bottom-0 left-0 bg-blue-600 h-1"></span>
         `;
 
-    function clearAlert(newAlert) {
-        let remainingTime = 5000; // زمان اولیه
-
-        let clearAlertTimeOut = setTimeout(function () {
-            newAlert.remove();
-        }, 5000);
-
-        newAlert.addEventListener('mousemove', function () {
-            clearTimeout(clearAlertTimeOut);
-            newAlert.querySelector('.tail_alert_time_animation').style.animationPlayState = "paused";
-        });
-        newAlert.addEventListener('mouseleave', function () {
-            newAlert.querySelector('.tail_alert_time_animation').style.animation = 'none'; // انیمیشن رو متوقف می‌کنیم
-            newAlert.querySelector('.tail_alert_time_animation').offsetHeight; // این خط باعث میشه انیمیشن دوباره از ابتدا اجرا بشه
-            newAlert.querySelector('.tail_alert_time_animation').style.animation = 'fullWidthAnimate 5s ease'; // انیمیشن رو دوباره تنظیم می‌کنیم
-
-            clearAlertTimeOut = setTimeout(function () {
-                newAlert.remove();
-            }, 5000);
-
-        });
-    }
 
     let newAlert = document.createElement('div');
     newAlert.className = "w-full min-h-max relative overflow-hidden  transition-all tail_alert_item transition-all mb-4 p-4 border border-white rounded-lg  flex-row  bg-gradient-to-b from-blue-100 to-blue-50 flex items-start space-x-3 shadow-md";
@@ -84,6 +97,7 @@ function infoMessage(message, description = null) {
     document.querySelectorAll('.tail_alert_item .close_tail_alert_item').forEach(tail_alert_item => {
         tail_alert_item.addEventListener('click', function () {
             tail_alert_item.parentElement.remove();
+            clearAlertBox();
         });
     });
 }
@@ -94,7 +108,7 @@ function successMessage(message, description = null) {
     if (!alertBox) {
         alertBox = document.createElement('div');
         alertBox.id = "alert_boxes_tail_alert";
-        alertBox.className = "fixed z-50 transition-all flex flex-col items-start justify-start top-0 right-0 h-screen overflow-x-hidden overflow-y-auto w-[200px] sm:w-[500px] p-4";
+        alertBox.className = "fixed z-50 transition-all flex flex-col items-start justify-start top-0 right-0 h-auto max-h-screen overflow-x-hidden overflow-y-auto w-[200px] sm:w-[500px] p-4";
         document.querySelector("body").appendChild(alertBox);
     }
     let alert = `
@@ -123,28 +137,7 @@ function successMessage(message, description = null) {
               <span class="absolute tail_alert_time_animation bottom-0 left-0 bg-green-600 h-1"></span>
         `;
 
-    function clearAlert(newAlert) {
-        let remainingTime = 5000; // زمان اولیه
 
-        let clearAlertTimeOut = setTimeout(function () {
-            newAlert.remove();
-        }, 5000);
-
-        newAlert.addEventListener('mousemove', function () {
-            clearTimeout(clearAlertTimeOut);
-            newAlert.querySelector('.tail_alert_time_animation').style.animationPlayState = "paused";
-        });
-        newAlert.addEventListener('mouseleave', function () {
-            newAlert.querySelector('.tail_alert_time_animation').style.animation = 'none'; // انیمیشن رو متوقف می‌کنیم
-            newAlert.querySelector('.tail_alert_time_animation').offsetHeight; // این خط باعث میشه انیمیشن دوباره از ابتدا اجرا بشه
-            newAlert.querySelector('.tail_alert_time_animation').style.animation = 'fullWidthAnimate 5s ease'; // انیمیشن رو دوباره تنظیم می‌کنیم
-
-            clearAlertTimeOut = setTimeout(function () {
-                newAlert.remove();
-            }, 5000);
-
-        });
-    }
 
     let newAlert = document.createElement('div');
     newAlert.className = "w-full min-h-max relative overflow-hidden  transition-all tail_alert_item transition-all mb-4 p-4 border border-white rounded-lg  flex-row  bg-gradient-to-b from-green-100 to-green-50 flex items-start space-x-3 shadow-md";
@@ -155,6 +148,7 @@ function successMessage(message, description = null) {
     document.querySelectorAll('.tail_alert_item .close_tail_alert_item').forEach(tail_alert_item => {
         tail_alert_item.addEventListener('click', function () {
             tail_alert_item.parentElement.remove();
+            clearAlertBox();
         });
     });
 }
@@ -166,7 +160,7 @@ function warningMessage(message, description = null) {
     if (!alertBox) {
         alertBox = document.createElement('div');
         alertBox.id = "alert_boxes_tail_alert";
-        alertBox.className = "fixed z-50 transition-all flex flex-col items-start justify-start top-0 right-0 h-screen overflow-x-hidden overflow-y-auto w-[200px] sm:w-[500px] p-4";
+        alertBox.className = "fixed z-50 transition-all flex flex-col items-start justify-start top-0 right-0 h-auto max-h-screen overflow-x-hidden overflow-y-auto w-[200px] sm:w-[500px] p-4";
         document.querySelector("body").appendChild(alertBox);
     }
     let alert = `
@@ -195,28 +189,6 @@ function warningMessage(message, description = null) {
               <span class="absolute tail_alert_time_animation bottom-0 left-0 bg-yellow-600 h-1"></span>
         `;
 
-    function clearAlert(newAlert) {
-        let remainingTime = 5000; // زمان اولیه
-
-        let clearAlertTimeOut = setTimeout(function () {
-            newAlert.remove();
-        }, 5000);
-
-        newAlert.addEventListener('mousemove', function () {
-            clearTimeout(clearAlertTimeOut);
-            newAlert.querySelector('.tail_alert_time_animation').style.animationPlayState = "paused";
-        });
-        newAlert.addEventListener('mouseleave', function () {
-            newAlert.querySelector('.tail_alert_time_animation').style.animation = 'none'; // انیمیشن رو متوقف می‌کنیم
-            newAlert.querySelector('.tail_alert_time_animation').offsetHeight; // این خط باعث میشه انیمیشن دوباره از ابتدا اجرا بشه
-            newAlert.querySelector('.tail_alert_time_animation').style.animation = 'fullWidthAnimate 5s ease'; // انیمیشن رو دوباره تنظیم می‌کنیم
-
-            clearAlertTimeOut = setTimeout(function () {
-                newAlert.remove();
-            }, 5000);
-
-        });
-    }
 
     let newAlert = document.createElement('div');
     newAlert.className = "w-full min-h-max relative overflow-hidden  transition-all tail_alert_item transition-all mb-4 p-4 border border-white rounded-lg  flex-row  bg-gradient-to-b from-yellow-100 to-yellow-50 flex items-start space-x-3 shadow-md";
@@ -227,11 +199,10 @@ function warningMessage(message, description = null) {
     document.querySelectorAll('.tail_alert_item .close_tail_alert_item').forEach(tail_alert_item => {
         tail_alert_item.addEventListener('click', function () {
             tail_alert_item.parentElement.remove();
+            clearAlertBox();
         });
     });
 }
-
-
 
 
 
@@ -241,7 +212,7 @@ function errorMessage(message, description = null) {
     if (!alertBox) {
         alertBox = document.createElement('div');
         alertBox.id = "alert_boxes_tail_alert";
-        alertBox.className = "fixed z-50 transition-all flex flex-col items-start justify-start top-0 right-0 h-screen overflow-x-hidden overflow-y-auto w-[200px] sm:w-[500px] p-4";
+        alertBox.className = "fixed z-50 transition-all flex flex-col items-start justify-start top-0 right-0 h-auto max-h-screen overflow-x-hidden overflow-y-auto w-[200px] sm:w-[500px] p-4";
         document.querySelector("body").appendChild(alertBox);
     }
     let alert = `
@@ -279,28 +250,6 @@ function errorMessage(message, description = null) {
               <span class="absolute tail_alert_time_animation bottom-0 left-0 bg-red-600 h-1"></span>
         `;
 
-    function clearAlert(newAlert) {
-        let remainingTime = 5000; // زمان اولیه
-
-        let clearAlertTimeOut = setTimeout(function () {
-            newAlert.remove();
-        }, 5000);
-
-        newAlert.addEventListener('mousemove', function () {
-            clearTimeout(clearAlertTimeOut);
-            newAlert.querySelector('.tail_alert_time_animation').style.animationPlayState = "paused";
-        });
-        newAlert.addEventListener('mouseleave', function () {
-            newAlert.querySelector('.tail_alert_time_animation').style.animation = 'none'; // انیمیشن رو متوقف می‌کنیم
-            newAlert.querySelector('.tail_alert_time_animation').offsetHeight; // این خط باعث میشه انیمیشن دوباره از ابتدا اجرا بشه
-            newAlert.querySelector('.tail_alert_time_animation').style.animation = 'fullWidthAnimate 5s ease'; // انیمیشن رو دوباره تنظیم می‌کنیم
-
-            clearAlertTimeOut = setTimeout(function () {
-                newAlert.remove();
-            }, 5000);
-
-        });
-    }
 
     let newAlert = document.createElement('div');
     newAlert.className = "w-full min-h-max relative overflow-hidden  transition-all tail_alert_item transition-all mb-4 p-4 border border-white rounded-lg  flex-row  bg-gradient-to-b from-red-100 to-red-50 flex items-start space-x-3 shadow-md";
@@ -311,6 +260,7 @@ function errorMessage(message, description = null) {
     document.querySelectorAll('.tail_alert_item .close_tail_alert_item').forEach(tail_alert_item => {
         tail_alert_item.addEventListener('click', function () {
             tail_alert_item.parentElement.remove();
+            clearAlertBox();
         });
     });
 

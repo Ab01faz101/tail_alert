@@ -22,14 +22,31 @@ composer require ab01faz101/tail-alert
  php artisan vendor:publish --provider="Ab01faz101\TailAlert\TailAlertServiceProvider" --force
 ```
 
-## Next, add the scripts component to your template after the @livewireStyles.
+### Next, add the scripts component to your template after the @livewireStyles.
 ```php
-    <link rel="stylesheet" href="{{asset('vendor/tail_alert/style.css')}}">
+<link rel="stylesheet" href="{{asset('vendor/tail_alert/style.css')}}">
 ```
 
-## Next, add the scripts component to your template after the @livewireScripts.
+### Next, add the scripts component to your template after the @livewireScripts.
 ```php
-    <script src="{{ asset('vendor/tail_alert/alert.js') }}"></script>
+<script src="{{ asset('vendor/tail_alert/alert.js') }}"></script>
+```
+
+## Tailwind Configuration
+
+Before using this package, make sure to add the following path to your `tailwind.config.js` file:
+
+```js
+module.exports = {
+  content: [
+    // ...
+    "./public/**/*.js",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
 ```
 
 

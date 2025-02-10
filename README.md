@@ -2,7 +2,15 @@
 # Tail Alert
 
 
-**Tail Alert** is a **Livewire** package that provides beautiful **toast notifications** using **Tailwind CSS**. It helps you display stylish alerts in your **Laravel Livewire** projects.
+**Tail Alert** is a lightweight **Livewire alert package** for **Laravel**, providing stylish **toast notifications** built with **Tailwind CSS**. It helps you display modern notifications easily in any **Livewire component**.
+
+## 🚀 Why Use Tail Alert?
+- No need for extra JavaScript libraries
+- Works seamlessly with **Livewire**
+- Uses **Tailwind CSS** for modern designs
+- Lightweight and fast 🚀
+
+
 
 ## Features
 ✔ Modern and minimal design with **Tailwind**  

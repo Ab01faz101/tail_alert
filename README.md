@@ -1,8 +1,16 @@
 ![Tail Alert Logo](https://cv.abolfazl01.ir/images/tail-alert-logo.jpg)
 # Tail Alert - Livewire Toast Notifications 🚀
-
+![Packagist Version](https://img.shields.io/packagist/v/Ab01faz101/tail-alert)
+![Downloads](https://img.shields.io/packagist/dt/Ab01faz101/tail-alert)
+![License](https://img.shields.io/github/license/Ab01faz101/tail-alert)
 
 **Tail Alert** is a lightweight **Livewire alert package** for **Laravel**, providing stylish **toast notifications** built with **Tailwind CSS**. It helps you display modern notifications easily in any **Livewire component**.
+
+
+## 📦 Installation & Links
+- **GitHub Repo**: [Tail Alert on GitHub](https://github.com/Ab01faz101/tail_alert)
+- **Packagist**: [Tail Alert on Packagist](https://packagist.org/packages/ab01faz101/tail-alert)
+
 
 ## 🚀 Why Use Tail Alert?
 - No need for extra JavaScript libraries
@@ -80,7 +88,7 @@ class Index extends Component
 
 **Note:** This package requires **Tailwind CSS** to be installed in your project.
 
-## Usage
+## 🔔 Usage
 In your Livewire component, you can trigger an alert like this:
 ```php
 $this->alert('success', 'alert message'  , "description");
@@ -89,6 +97,11 @@ $this->alert('warning', 'alert message' , "description");
 $this->alert('error', 'alert message'  , "description");
 ```
 💡 The **type** can be `success`, `error`, `warning`, or `info`.
+
+
+## 🔍 Keywords  
+Livewire Toast Notifications, Laravel Alerts, Tailwind CSS Alerts, Livewire Notifications, Laravel Toast  
+
 
 ## License
 This package is released under the **MIT License**.

@@ -75,9 +75,7 @@ function infoMessage(message, description = null) {
               </div>
               <div class="flex w-full flex-col items-start justify-center">
                 <h3 class="text-lg font-semibold text-gray-900">${message}</h3>
-                <p class="text-gray-700 text-justify text-sm">
-                  ${description}
-                </p>
+                ${description ? `<p class="text-gray-700 text-justify text-sm">${description}</p>` : ''}
               </div>
               <button class="close_tail_alert_item">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -125,9 +123,7 @@ function successMessage(message, description = null) {
               </div>
               <div class="flex w-full flex-col items-start justify-center">
                 <h3 class="text-lg font-semibold text-gray-900">${message}</h3>
-                <p class="text-gray-700 text-justify text-sm">
-                  ${description}
-                </p>
+                ${description ? `<p class="text-gray-700 text-justify text-sm">${description}</p>` : ''}
               </div>
               <button class="close_tail_alert_item">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -177,9 +173,7 @@ function warningMessage(message, description = null) {
               </div>
               <div class="flex w-full flex-col items-start justify-center">
                 <h3 class="text-lg font-semibold text-gray-900">${message}</h3>
-                <p class="text-gray-700 text-justify text-sm">
-                  ${description}
-                </p>
+                ${description ? `<p class="text-gray-700 text-justify text-sm">${description}</p>` : ''}
               </div>
               <button class="close_tail_alert_item">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -238,9 +232,7 @@ function errorMessage(message, description = null) {
               </div>
               <div class="flex w-full flex-col items-start justify-center">
                 <h3 class="text-lg font-semibold text-gray-900">${message}</h3>
-                <p class="text-gray-700 text-justify text-sm">
-                  ${description}
-                </p>
+               ${description ? `<p class="text-gray-700 text-justify text-sm">${description}</p>` : ''}
               </div>
               <button class="close_tail_alert_item">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

@@ -168,7 +168,7 @@ public function flashInfo() {
 ```
 
 ```php
-public function redirect() {
+public function redirectAlert() {
     return redirect()->route('test')->with('alert' , [
         'type' => 'success',
         'message' => 'mission successfully!'

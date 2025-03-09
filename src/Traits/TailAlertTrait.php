@@ -2,7 +2,7 @@
 
 namespace Ab01faz101\TailAlert\Traits;
 
-trait AlertTrait
+trait TailAlertTrait
 {
     public function alert($type, $message , $description = null)
     {

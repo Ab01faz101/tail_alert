@@ -27,9 +27,10 @@
 
 ## Preview
 ![Tail Alert Preview](https://cv.abolfazl01.ir/images/tail-alert-demo.png)
+![Tail Alert Preview](https://cv.abolfazl01.ir/images/tail-alert-modal.png)
 
 
-## Installation
+## 🛠️ Installation
 ### You can install the package via composer:
 ```sh
 composer require ab01faz101/tail-alert
@@ -42,7 +43,39 @@ composer require ab01faz101/tail-alert
 ```php
 <link rel="stylesheet" href="{{asset('vendor/tail_alert/style.css')}}">
 ```
+### or Add the following codes to your custom style or app.css.
+```css
+.tail_alert_item.active{
+    animation: tail_alert_item_move .4s;
+}
 
+.tail_alert_item.active .tail_alert_time_animation{
+    margin: 0!important;
+    animation: fullWidthAnimate 5s ease;
+}
+
+
+
+@keyframes fullWidthAnimate {
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+@keyframes tail_alert_item_move {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+
+```
 ### Next, add the scripts component to your template after the @livewireScripts.
 ```php
 <script src="{{ asset('vendor/tail_alert/alert.js') }}"></script>
@@ -56,7 +89,7 @@ Before using this package, make sure to add the following path to your `tailwind
 module.exports = {
   content: [
     // ...
-    "./public/**/*.js",
+    "./public/vendor/tail_alert/alert.js",
   ],
   theme: {
     extend: {},
@@ -64,17 +97,24 @@ module.exports = {
   plugins: [],
 };
 ```
+### Add this line of code to your Livewire component.
+```php
+@include('components.alerts')
+```
 
 
+**Note:** This package requires **Tailwind CSS** to be installed in your project.
 
+## 🔔 Usage
 
 ### You can use Tail Alert  by using the AlertTrait trait.
+
 ```php
-use Ab01faz101\TailAlert\Traits\AlertTrait;
+use Ab01faz101\TailAlert\Traits\TailAlertTrait;
  
 class Index extends Component
 {
-    use AlertTrait;
+    use TailAlertTrait;
     
     public function submit()
     {
@@ -86,9 +126,7 @@ class Index extends Component
 
 
 
-**Note:** This package requires **Tailwind CSS** to be installed in your project.
 
-## 🔔 Usage
 In your Livewire component, you can trigger an alert like this:
 ```php
 $this->alert('success', 'alert message'  , "description");
@@ -96,6 +134,48 @@ $this->alert('info', 'alert message'  , "description");
 $this->alert('warning', 'alert message' , "description");
 $this->alert('error', 'alert message'  , "description");
 ```
+
+<a href="https://www.youtube.com/watch?v=2cfV8cwz7wo"><img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"></a>
+
+```php
+public function flashSuccess() {
+    session()->flash('alert', [
+        'type' => 'success',
+        'message' => 'Successful Operation!'
+    ]);
+}
+
+public function flashError() {
+    session()->flash('alert', [
+        'type' => 'error',
+        'message' => 'An Error Occurred.'
+    ]);
+}
+
+public function flashWarning() {
+    session()->flash('alert', [
+        'type' => 'warning',
+        'message' => 'Warning.'
+    ]);
+}
+
+public function flashInfo() {
+    session()->flash('alert', [
+        'type' => 'info',
+        'message' => 'Information.'
+    ]);
+}
+```
+
+```php
+public function redirect() {
+    return redirect()->route('test')->with('alert' , [
+        'type' => 'success',
+        'message' => 'mission successfully!'
+    ]);
+}
+```
+
 💡 The **type** can be `success`, `error`, `warning`, or `info`.
 
 

@@ -39,12 +39,10 @@ composer require ab01faz101/tail-alert
  php artisan vendor:publish --provider="Ab01faz101\TailAlert\TailAlertServiceProvider" --force
 ```
 
-### Next, add the scripts component to your template after the @livewireStyles.
-```php
-<link rel="stylesheet" href="{{asset('vendor/tail_alert/style.css')}}">
-```
-### or Add the following codes to your custom style or app.css.
+### Add the following codes to your custom style or app.css.
 ```css
+@source '../../public/vendor/tail_alert/alert.js"';
+
 .tail_alert_item.active{
     animation: tail_alert_item_move .4s;
 }
@@ -81,22 +79,7 @@ composer require ab01faz101/tail-alert
 <script src="{{ asset('vendor/tail_alert/alert.js') }}"></script>
 ```
 
-## Tailwind Configuration
 
-Before using this package, make sure to add the following path to your `tailwind.config.js` file:
-
-```js
-module.exports = {
-  content: [
-    // ...
-    "./public/vendor/tail_alert/alert.js",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-```
 ### Add this line of code to your Livewire component.
 ```php
 @include('components.alerts')

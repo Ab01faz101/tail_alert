@@ -16,10 +16,17 @@
     ],
     "require": {
         "php": ">=8.0",
-        "livewire/livewire": "^3.0",
+        "livewire/livewire": "^3.0 || ^4.0",
         "laravel/framework": ">=11.0"
     },
-    "keywords": ["livewire", "alert", "notification", "tailwind", "toast", "laravel"],
+    "keywords": [
+        "livewire",
+        "alert",
+        "notification",
+        "tailwind",
+        "toast",
+        "laravel"
+    ],
     "extra": {
         "laravel": {
             "providers": [
